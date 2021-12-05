@@ -1,0 +1,64 @@
+.editable{
+  width: 100%;
+}
+
+.editable_display{
+  cursor: pointer;
+  background-color: white;
+  padding: 10px;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+}
+
+.editable_display:hover{
+  background-color: #ccc;
+}
+
+.editable_edit{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.editable_edit input{
+  border: 1px solid rgb(44, 213, 255);
+  outline: none;
+  border-radius: 3px;
+  padding: 10px;
+  font-size: 1rem;;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+}
+
+.editable_edit_footer{
+display: flex;
+gap: 10px;
+align-items: center;
+}
+
+.editable_edit_footer button{
+  cursor: pointer;
+  outline: none;
+  border: none;
+  color: #fff;
+  background-color: #1379ec;
+  padding: 8px 16px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.editable_edit_footer button:hover{
+background-color: #0765d1;
+}
+
+.editable_edit_footer svg{
+  cursor: pointer;
+}

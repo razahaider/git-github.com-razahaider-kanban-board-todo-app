@@ -21,6 +21,7 @@
 }
 
 .app_boards{
+  height:100%;
   min-width: fit-content;
   display: flex;
   gap: 30px;
