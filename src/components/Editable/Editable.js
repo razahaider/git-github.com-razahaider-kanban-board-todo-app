@@ -15,12 +15,14 @@ const Editable = (props) => {
            className={`editable_edit ${props.editClass || ""}`}
            onSubmit = { (event)=>{
             event.preventDefault();
-            if(props.onSubmit) props.onSubmit()
+            if(props.onSubmit) props.onSubmit(inputValue);
           }}
       >
         <div className="editable_edit">
-          <input autoFocus type="text" 
-                 defaultValue={}
+          <input autoFocus
+                 type="text"
+                 value={inputValue} 
+                 onChange={(e)=> setInputValue(e.target.value)}
                  placeholder={props.placeholder}/>
 
           <div className="editable_edit_footer">

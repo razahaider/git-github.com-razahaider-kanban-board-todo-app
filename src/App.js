@@ -144,7 +144,7 @@ const App = () => {
               displayClass="app_boards_board_add" 
               text="Add Board"
               placeholder="Enter Board Title"
-              onSubmit={(value)}
+              onSubmit={(value)=>addBoard(value)}
               />
              
              </div>

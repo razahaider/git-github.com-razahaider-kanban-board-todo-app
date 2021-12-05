@@ -31,7 +31,10 @@ const Board = (props) => {
           )
 
         }  
-        <Editable displayClass="boards_cards_add" text="Add Card Details" placeholder="Enter Card Title"/>
+        <Editable displayClass="boards_cards_add" 
+        text="Add Card Details"
+         placeholder="Enter Card Title"
+         />
       </div>  
     </div>
   )
