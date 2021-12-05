@@ -50,3 +50,19 @@ height: 14px;
   gap: 5px;
   align-items: center;
 }
+
+.card_top_more{
+  position:relative;
+}
+
+.card_dropdown{
+  background-color: #fff;
+  width: 130px;
+  padding: 10px;
+  border-radius: 3px;
+  box-shadow: 1px 0 20px rgb(43, 43, 43);
+}
+
+.card_dropdown p{
+  cursor:pointer;
+}

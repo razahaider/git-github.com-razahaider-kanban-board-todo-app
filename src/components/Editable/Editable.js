@@ -3,7 +3,7 @@ import { X } from 'react-feather'
 import { useState } from 'react';
 import './Editable.css'
 const Editable = (props) => {
-  const [showEdit, setshowEdit] = useState(true);
+  const [showEdit, setshowEdit] = useState(false);
 
   return (
     <div className="editable">
@@ -16,7 +16,7 @@ const Editable = (props) => {
           }}
       >
         <div className="editable_edit">
-          <input type="text" defaultValue={props.text} placeholder={props.placeholder}/>
+          <input autoFocus type="text" defaultValue={props.text} placeholder={props.placeholder}/>
 
           <div className="editable_edit_footer">
             <button type="submit">{props.buttonText || "Add"}</button>

@@ -35,8 +35,24 @@
   background-color: #fff;
   box-shadow: 1px 2px 0 1px black;
   border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
+}
+
+.boards_cards_add:hover{
+  box-shadow: 1px 2px 0 1px #ccc;
+}
+
+.board_top_more{
+  position:relative;
+}
+
+.board_dropdown{
+  background-color: #fff;
+  width: 130px;
+  padding: 10px;
+  border-radius: 3px;
+  box-shadow: 1px 0 20px rgb(43, 43, 43);
+}
+
+.board_dropdown p{
+  cursor:pointer;
 }
