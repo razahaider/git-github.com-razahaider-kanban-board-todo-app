@@ -18,7 +18,8 @@
 }
 
 .board_top_title span{
-  color: rgb(211, 211, 211);
+  padding-left: 50px;
+  color: rgb(70, 69, 69);
 }
 
 .board_cards{

@@ -5,13 +5,13 @@ import Card from '../Card/Card'
 import Editable from '../Editable/Editable'
 import Dropdown from '../Dropdown/Dropdown'
 import { useState } from 'react'
-const Board = () => {
+const Board = (props) => {
   const [showDropdown, setShowDropdown] = useState(false);
   return (
     <div className="board">
 
       <div className="board_top">
-        <p className="board_top_title">todo<span>2</span> </p>
+        <p className="board_top_title">{props.board?.title}<span>{`${props.board?.cards?.length}`}</span></p>
         <div className="board_top_more">
           
              <MoreHorizontal  onClick={() =>{setShowDropdown(true)}}/>
@@ -25,8 +25,12 @@ const Board = () => {
         </div>
       </div>
       <div className="board_cards">
-        <Card/>
-        <Card/>  
+        {
+          props.board?.cards.map((c)=>
+            <Card key={c.id} labels={c.labels} description={c.desc}/>
+          )
+
+        }  
         <Editable displayClass="boards_cards_add" text="Add Card Details" placeholder="Enter Card Title"/>
       </div>  
     </div>

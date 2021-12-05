@@ -4,13 +4,19 @@ import './Card.css'
 import Chip from '../Chip/Chip'
 import { useState } from 'react'
 import Dropdown from '../Dropdown/Dropdown'
-const Card = () => {
+const Card = (props) => {
   const [showDropdown, setShowDropdown] = useState(false);
   return (
     <div className="card">
        <div className="card_top">
          <div className="card_top_labels">
-          <Chip text="FrontEnd" color="green"/>
+           {
+             props.labels.map((l)=>
+
+             <Chip text={l.text} color={(l.color)?l.color:"green"}/>
+             )
+           }
+        
          </div>
          <div className="card_top_more">
 
@@ -28,7 +34,7 @@ const Card = () => {
 
        </div>
        <div className="card_title">
-         Card-123
+        {props.description}
        </div>
        <div className="card_footer">
          <p><Clock />29 Sept</p>
