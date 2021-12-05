@@ -68,6 +68,7 @@ const App = () => {
   ]);
 
   const addCard = (title, bid)=>{
+
       const card={
         id: Date.now() + Math.random(),
           tasks: [],
@@ -78,6 +79,47 @@ const App = () => {
           desc:title,
           date:"" 
       };
+
+      const index = boards.findIndex((item)=> item.id === bid);
+      if(index<0) return;
+
+      const tempBoards = [...boards];
+      tempBoards[index].cards.push(card);
+      setBoards(tempBoards);
+       
+
+  }
+
+  const removeCard =(cid, bid)=>{
+
+    const index = boards.findIndex((item)=> item.id === bid);
+    if(index<0) return;
+
+    const tempBoards = [...boards];
+    const cardIndex = tempBoards[index].cards.filterIndex((item)=> item.id === cid)
+
+    if(cardIndex<0) return;
+
+    tempBoards[index].cards.splice(cardIndex, 1);
+    setBoards(tempBoards);
+
+  }
+
+  const addBoard = (title)=>{
+
+    setBoards([ ...boards, {
+        id: Date.now() + Math.random(),
+        title,
+        cards:[]
+      }
+    ])
+
+  }
+
+  const removeBoard=(bid)=>{
+    const tempBoards= boards.filter(item=> item.id!==bid);
+
+    setBoards(tempBoards);
   }
 
   return (
@@ -98,7 +140,12 @@ const App = () => {
             
              <div className="app_boards_board">
                
-             <Editable displayClass="app_boards_board_add" text="Add Board" placeholder="Enter Board Title"/>
+             <Editable
+              displayClass="app_boards_board_add" 
+              text="Add Board"
+              placeholder="Enter Board Title"
+              onSubmit={(value)}
+              />
              
              </div>
         </div>
