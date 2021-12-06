@@ -67,7 +67,37 @@ const App = () => {
           }]
     }
   ]);
+  const [target, setTarget] = useState({cid:"", bid:""});
 
+  const handleDragEnter = (cid, bid) =>{
+    setTarget({
+       cid,
+      bid
+      });
+  };
+  const handleDragEnd = (cid, bid) =>{
+      let sourceBoard_Index, sourceCard_Index, targetBoard_Index, targetCard_Index;
+
+      sourceBoard_Index = boards.findIndex((i)=> i.id===bid);
+      if(sourceBoard_Index<0) return;
+
+      sourceCard_Index = boards[sourceBoard_Index].cards?.findIndex((i)=> i.id===cid);
+      if(sourceCard_Index<0) return;
+
+      targetBoard_Index = boards.findIndex((i)=> i.id===target.bid);
+      if(targetBoard_Index<0) return;
+
+      targetCard_Index = boards[targetBoard_Index].cards?.findIndex((i)=> i.id===target.cid);
+      if(targetCard_Index <0) return;
+
+      const tempboards = [...boards];
+      const tempCard = tempboards[sourceBoard_Index].cards[sourceCard_Index];
+     
+      tempboards[sourceBoard_Index].cards.splice(sourceCard_Index, 1);
+      tempboards[targetBoard_Index].cards.splice(targetCard_Index, 0, tempCard);
+
+      setBoards(tempboards);
+  };
   const resetBoards = ()=>{
     setBoards([
       {
@@ -131,7 +161,7 @@ const App = () => {
             }]
       }
     ]);
-  }
+  };
   const addCard = (title, bid)=>{
 
       const card={
@@ -153,7 +183,7 @@ const App = () => {
       setBoards(tempBoards);
        
 
-  }
+  };
 
   const removeCard =(cid, bid)=>{
 
@@ -168,7 +198,7 @@ const App = () => {
     tempBoards[index].cards.splice(cardIndex, 1);
     setBoards(tempBoards);
 
-  }
+  };
 
   const addBoard = (title)=>{
 
@@ -179,13 +209,13 @@ const App = () => {
       }
     ])
 
-  }
+  };
 
   const removeBoard=(bid)=>{
     const tempBoards= boards.filter(item=> item.id!==bid);
 
     setBoards(tempBoards);
-  }
+  };
 
   const searchCard =(ctitle)=>{
     var boardIndex = 0;
@@ -235,6 +265,8 @@ const App = () => {
                     addCard={(cardTitleValue, id)=>addCard(cardTitleValue, id)} 
                     delBoard={(id)=>{removeBoard(id)} }
                     delCard={(cid, bid)=>{removeCard(cid, bid)} } 
+                    handleDragEnd={handleDragEnd}
+                    handleDragEnter={handleDragEnter}
                     /> 
               </div>;
           }

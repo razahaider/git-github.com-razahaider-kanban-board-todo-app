@@ -29,7 +29,11 @@ const Board = (props) => {
         {
           props.board?.cards.map((c)=>
             <Card key={c.id} labels={c.labels} description={c.desc} cardDetail={c} 
-            delCard={(cid)=>{props.delCard(cid, props.board?.id)}}/>
+            delCard={(cid)=>{props.delCard(cid, props.board?.id)}}
+            handleDragEnd={props.handleDragEnd}
+                    handleDragEnter={props.handleDragEnter}
+                    card={c} boardId={props.board?.id}
+            />
           )
 
         }  
