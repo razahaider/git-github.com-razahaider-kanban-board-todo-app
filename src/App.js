@@ -3,6 +3,7 @@ import './App.css'
 import Board from './components/Board/Board'
 import Editable from './components/Editable/Editable'
 import { useState } from 'react'
+import Header from './components/header/Header'
 const App = () => {
   const [boards, setBoards] =useState([
     {
@@ -213,8 +214,9 @@ const App = () => {
   }
   return (
     <div className="app">
-      <div className="app_navbar">
-          <h2>Kanban</h2>
+     
+         <Header/>
+         <div className="app_navbar">
           <Editable
               displayClass="app_boards_board_add" 
               buttonText="Search Card"
@@ -243,7 +245,7 @@ const App = () => {
                
              <Editable
               displayClass="app_boards_board_add" 
-              text="Add Board"
+              buttonText="Add Board"
               placeholder="Enter Board Title"
               onSubmit={(value)=>addBoard(value)}
               />

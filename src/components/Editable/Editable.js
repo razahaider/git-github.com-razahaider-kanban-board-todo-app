@@ -38,7 +38,7 @@ const Editable = (props) => {
         )
         : 
         <p className={`editable_display ${props.displayClass || ""}`}
-           onClick={()=>setshowEdit(true)}>{props.text || "Add Item"}</p>
+           onClick={()=>setshowEdit(true)}>{props.buttonText || "Add Item"}</p>
       }
     </div>
   )

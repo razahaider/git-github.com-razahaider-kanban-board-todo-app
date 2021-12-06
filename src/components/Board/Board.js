@@ -34,7 +34,7 @@ const Board = (props) => {
 
         }  
         <Editable displayClass="boards_cards_add" 
-        text="Add Card Details"
+        buttonText="Add Card Details"
          placeholder="Enter Card Title"
          onSubmit={(cardTitleValue)=>props.addCard(cardTitleValue, props.board?.id)}
          />
