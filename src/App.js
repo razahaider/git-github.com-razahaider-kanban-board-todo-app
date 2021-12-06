@@ -67,14 +67,78 @@ const App = () => {
     }
   ]);
 
+  const resetBoards = ()=>{
+    setBoards([
+      {
+        id: Date.now() + Math.random(),
+        title: "Board-1",
+        cards:[
+          {
+            id:  Date.now() + Math.random(),
+            tasks: [],
+            labels:[{
+                text: "backend",
+                color: "black"
+              }],
+            desc:"complete REST APIs tutorial",
+            date:""
+          },
+          {
+            id:  Date.now() + Math.random(),
+            tasks: [],
+            labels:[{
+                text: "database",
+                color: "brown"
+              }],
+            desc:"complete MySQL tutorial",
+            date:""
+          },
+          {  
+            id:  Date.now() + Math.random(),
+            tasks: [],
+            labels:[{
+                text: "database",
+                color: "orange"
+              }],
+            desc:"complete mongoDB tutorial",
+            date:""
+            }]
+      },
+      {
+        id: Date.now() + Math.random(),
+        title: "Board-2",
+        cards:[
+          {
+                 id:  Date.now() + Math.random(),
+                tasks: [],
+                labels:[{
+                    text: "frontend",
+                    color: "blue"
+                  }],
+                desc:"complete react tutorial",
+                date:""
+          },
+          {
+            id:  Date.now() + Math.random(),
+            tasks: [],
+            labels:[{
+                text: "frontend",
+                color: "green"
+              }],
+            desc:"complete redux tutorial",
+            date:""
+            }]
+      }
+    ]);
+  }
   const addCard = (title, bid)=>{
 
       const card={
         id: Date.now() + Math.random(),
           tasks: [],
           labels:[{
-              text: "",
-              color: ""
+              text: "default label",
+              color: "green"
             }],
           desc:title,
           date:"" 
@@ -96,7 +160,7 @@ const App = () => {
     if(index<0) return;
 
     const tempBoards = [...boards];
-    const cardIndex = tempBoards[index].cards.filterIndex((item)=> item.id === cid)
+    const cardIndex = tempBoards[index].cards.findIndex((item)=> item.id === cid)
 
     if(cardIndex<0) return;
 
@@ -109,7 +173,7 @@ const App = () => {
 
     setBoards([ ...boards, {
         id: Date.now() + Math.random(),
-        title,
+        title:title,
         cards:[]
       }
     ])
@@ -122,17 +186,54 @@ const App = () => {
     setBoards(tempBoards);
   }
 
+  const searchCard =(ctitle)=>{
+    var boardIndex = 0;
+    boards.forEach((item)=>{
+     const card= item.cards.filter((c)=>c.desc===ctitle);
+    if(card.length!=0 && card!=[]){
+     boardIndex=item.id;
+     return;
+    }
+  });
+    if (boardIndex<0 || boardIndex===undefined) return;
+
+   const tempBoard = boards.filter((b)=>b.id===boardIndex);
+   const tempCard  = tempBoard[0].cards.filter((c)=>c.desc===ctitle);
+   tempBoard[0].cards = tempCard;
+   
+   setBoards(tempBoard);
+
+
+  }
+
+  
+  const doCloseHandler=()=>{
+   
+    resetBoards();
+  }
   return (
     <div className="app">
       <div className="app_navbar">
           <h2>Kanban</h2>
+          <Editable
+              displayClass="app_boards_board_add" 
+              buttonText="Search Card"
+              placeholder="Enter Card Title"
+              onSubmit={(cardTitle)=>searchCard(cardTitle)} onReset={()=>resetBoards()}
+              />
+              <button  className="reset-boards-btn" onClick={()=>doCloseHandler()}>Reset boards</button>
       </div>
+
       <div className="app_outer">
         <div className="app_boards">
           {
             boards.map((board)=>{ 
               return <div>
-              <Board key={board.id} board={board} /> 
+              <Board key={board.id} board={board} 
+                    addCard={(cardTitleValue, id)=>addCard(cardTitleValue, id)} 
+                    delBoard={(id)=>{removeBoard(id)} }
+                    delCard={(cid, bid)=>{removeCard(cid, bid)} } 
+                    /> 
               </div>;
           }
             )

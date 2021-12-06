@@ -5,7 +5,11 @@ import './Editable.css'
 const Editable = (props) => {
   const [showEdit, setshowEdit] = useState(false);
   const [inputValue, setInputValue] = useState(props.text ||"");
-
+  
+  const doCloseHandler=()=>{
+    setshowEdit(false);
+   
+  }
   return (
     <div className="editable">
       {
@@ -27,7 +31,7 @@ const Editable = (props) => {
 
           <div className="editable_edit_footer">
             <button type="submit">{props.buttonText || "Add"}</button>
-            <X onClick={()=>setshowEdit(false)}/>
+            <X onClick={()=>doCloseHandler()}/> 
           </div>
         </div>
       </form>

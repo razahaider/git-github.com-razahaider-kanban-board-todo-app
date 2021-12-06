@@ -7,6 +7,7 @@ import Dropdown from '../Dropdown/Dropdown'
 import { useState } from 'react'
 const Board = (props) => {
   const [showDropdown, setShowDropdown] = useState(false);
+  const[cardValue, setCardValue] = useState({cardTitle:"default title", bid:1});
   return (
     <div className="board">
 
@@ -18,7 +19,7 @@ const Board = (props) => {
             { showDropdown && (
              <Dropdown onClose={()=>setShowDropdown(false)}>
                 <div className="board_dropdown">
-                  <p>Delete Board</p>
+                  <p onClick={()=>{props.delBoard(props.board?.id)}}>Delete Board</p>
                 </div>
               </Dropdown>
              )}
@@ -27,13 +28,15 @@ const Board = (props) => {
       <div className="board_cards">
         {
           props.board?.cards.map((c)=>
-            <Card key={c.id} labels={c.labels} description={c.desc}/>
+            <Card key={c.id} labels={c.labels} description={c.desc} cardDetail={c} 
+            delCard={(cid)=>{props.delCard(cid, props.board?.id)}}/>
           )
 
         }  
         <Editable displayClass="boards_cards_add" 
         text="Add Card Details"
          placeholder="Enter Card Title"
+         onSubmit={(cardTitleValue)=>props.addCard(cardTitleValue, props.board?.id)}
          />
       </div>  
     </div>

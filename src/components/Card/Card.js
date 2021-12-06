@@ -25,7 +25,7 @@ const Card = (props) => {
          { showDropdown && (
           <Dropdown onClose={()=>setShowDropdown(false)}>
              <div className="card_dropdown">
-               <p>Delete Card</p>
+               <p  onClick={()=>{props.delCard(props.cardDetail.id)}}>Delete Card</p>
              </div>
            </Dropdown>
           )}

@@ -6,7 +6,7 @@ const Dropdown = (props) => {
 
   const handleClick=(e)=>{
     // means if clicked outside the dropdownref then props.onclose will be called
-      if(dropdownRef && !dropdownRef.current.contains(e.target)){
+      if(dropdownRef && dropdownRef.current!==null && !dropdownRef.current.contains(e.target)){
       if(props.onClose)
        props.onClose();
     }
