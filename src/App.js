@@ -226,7 +226,7 @@ const App = () => {
      return;
     }else{
        boardIndex = -1;
-      return;
+    
     }
   });
     if (boardIndex<0 || boardIndex===undefined) return;
