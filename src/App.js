@@ -224,6 +224,8 @@ const App = () => {
     if(card.length!=0 && card!=[]){
      boardIndex=item.id;
      return;
+    }else{
+      return;
     }
   });
     if (boardIndex<0 || boardIndex===undefined) return;
