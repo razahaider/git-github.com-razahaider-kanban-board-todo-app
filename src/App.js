@@ -218,15 +218,12 @@ const App = () => {
   };
 
   const searchCard =(ctitle)=>{
-    var boardIndex = 0;
+    var boardIndex = -1;
     boards.forEach((item)=>{
      const card= item.cards.filter((c)=>c.desc===ctitle);
     if(card.length!=0 && card!=[]){
      boardIndex=item.id;
      return;
-    }else{
-       boardIndex = -1;
-    
     }
   });
     if (boardIndex<0 || boardIndex===undefined) return;
