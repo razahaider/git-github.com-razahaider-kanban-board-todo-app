@@ -225,6 +225,7 @@ const App = () => {
      boardIndex=item.id;
      return;
     }else{
+       boardIndex = -1;
       return;
     }
   });
