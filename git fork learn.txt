@@ -1,0 +1,3 @@
+-learning to git fork
+-doing git pull request from forkedrepo to repo
+this is text from vim
